@@ -11,7 +11,6 @@ function submitHandler() {
   var ip = Number(initialPrice.value);
   var qty = Number(stocksQuantity.value);
   var curr = Number(currentPrice.value);
-
   calculateProfitAndLoss(ip, qty, curr);
 }
 
@@ -20,16 +19,18 @@ function calculateProfitAndLoss(initial, quantity, current) {
     // loss logic here
     var loss = (initial - current) * quantity;
     var lossPercentage = (loss / initial) * 100;
+    var lossPercent = lossPercentage.toFixed(2);
     outputText.style.display = "block";
     outputText.style.background = "#F32424";
-    outputText.innerText = `Hey the loss is ${loss} and the percent is ${lossPercentage}%`;
+    outputText.innerText = `Hey the loss is ${loss} and the percent is ${lossPercent}%`;
   } else if (current > initial) {
     // profit logic here
     var profit = (current - initial) * quantity;
     var profitPercentage = (profit / initial) * 100;
+    var profitPercent = profitPercentage.toFixed(2);
     outputText.style.display = "block";
     outputText.style.background = "#3EC70B";
-    outputText.innerText = `Hey the profit is ${profit} and the percent is ${profitPercentage}%`;
+    outputText.innerText = `Hey the profit is ${profit} and the percent is ${profitPercent}%`;
   } else {
     // the rest of logic
     outputText.style.display = "block";
